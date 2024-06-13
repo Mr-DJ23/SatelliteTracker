@@ -10,12 +10,11 @@ import SocketStatus from './components/Common/SocketStatus';
 
 import AsteroidListScreen from './components/Asteroid/AsteroidListScreen';
 import AsteroidOrbit from './components/Asteroid/AsteroidOrbit';
-import TestPage from './components/Asteroid/Leaf/Test';
 
 import Login from './components/Common/Login';
-import AstronautTracking from './components/Astronaut/Astronaut';
 
 import './App.css';
+import ImageOverlay from './components/ImgOverlay/ImageOverlay';
 
 
 function App() {
@@ -41,12 +40,13 @@ function App() {
           <Routes>
             <Route path="/asteroids" element={<AsteroidListScreen />} />
             <Route path="/asteroid/:asteroidId" element={<AsteroidOrbit/>} />
-            <Route path="/asteroid/details/:asteroidId" element={<TestPage/>} />
+            {/* <Route path="/asteroid/details/:asteroidId" element={<TestPage/>} /> */}
             <Route path="/satellites" element={<SatellitesViewer setSelectedSatelliteName={setSelectedSatelliteName} satName={selectedSatelliteName}/>} />
             <Route path="/drift" element={authenticated ? <DriftVisualisation satName={selectedSatelliteName} /> : <Navigate to="/login" />} />
             <Route path="/" element={authenticated ? <Home /> : <Navigate to="/login" />} />
             <Route path="/astronaut" element={authenticated ? <AstronautTracking userId={userId}/> : <Navigate to="/login" />} />
             <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
+            <Route path="/imageOverlay" element={<ImageOverlay />} />
           </Routes>
         </div> 
 
